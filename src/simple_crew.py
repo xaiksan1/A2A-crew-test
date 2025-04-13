@@ -1,5 +1,20 @@
+import os
+from dotenv import load_dotenv
 from crewai import Agent, Task, Crew
 from langchain_openai import ChatOpenAI
+
+# Load environment variables
+load_dotenv()
+
+def get_openai_api_key():
+    return os.getenv('OPENAI_API_KEY', 'dummy-key')
+
+# Create LLM instance
+llm = ChatOpenAI(
+    openai_api_key=get_openai_api_key(),
+    model="gpt-3.5-turbo",  # Using a more accessible model
+    temperature=0.7
+)
 
 # Create a basic researcher agent
 def create_researcher():
@@ -8,7 +23,8 @@ def create_researcher():
         goal='Analyze and gather information',
         backstory='Expert at analyzing and gathering accurate information',
         allow_delegation=False,
-        verbose=True
+        verbose=True,
+        llm=llm
     )
 
 # Create a basic writer agent
@@ -18,7 +34,8 @@ def create_writer():
         goal='Write clear and engaging content',
         backstory='Expert at writing clear and engaging content',
         allow_delegation=False,
-        verbose=True
+        verbose=True,
+        llm=llm
     )
 
 # Create tasks

@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/simple_crew.py
+src/a2a_crew_test.egg-info/PKG-INFO
+src/a2a_crew_test.egg-info/SOURCES.txt
+src/a2a_crew_test.egg-info/dependency_links.txt
+src/a2a_crew_test.egg-info/requires.txt
+src/a2a_crew_test.egg-info/top_level.txt
+tests/test_simple_crew.py
